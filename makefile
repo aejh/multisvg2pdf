@@ -2,11 +2,11 @@
 SVG_PAGES := $(wildcard  *.svg)
 PDF_PAGES := $(SVG_PAGES:%.svg=%.pdf)
 
-.PHONY: clean document
+.PHONY: clean
 
-document: $(PDF_PAGES)
-	@echo Combining $^ into $@.pdf
-	@pdftk $^ cat output $@.pdf
+document.pdf: $(PDF_PAGES)
+	@echo Combining $^ into $@
+	@pdftk $^ cat output $@
 
 %.pdf: %.svg 
 	@echo Making $@
